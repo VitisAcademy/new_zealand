@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Новая Зеландия</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/draggabilly.pkgd.min.js"></script>
+  <script src="js/db.js"></script>
+</head>
+<body>
+<div class="ave">
+  <div class="ave__title">Введите email</div>
+  <input type="email" maxlength="40" autocomplete="off" onkeyup="checkValidate(this)" autofocus class="ave__input">
+  <div class="ave__button button" onclick="logIn()">Продолжить</div>
+</div>
+<div class="header">
+  <div class="header__menu" onclick="toggleHamburger()"></div>
+  <div class="header__title">Журналист</div>
+</div>
+<div class="main">
+  <div class="task">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Помогите журналисту написать статью. Для этого заполните пробелы в предложениях.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page scribe left">
+      <div class="scribe__title">
+          <input type="text" maxlength="8" autocomplete="off" class="scribe__input" style='width: calc(132px + (148 - 132) * ((100vw - 320px) / 880))'>
+        . Второй по размерам регион Новой Зеландии. Первые лозы здесь появились в 1851 году стараниями миссионеров. Здесь сосредоточено большинство старейших виноделен страны.<br><br>
+          <input type="text" maxlength="7" autocomplete="off" class="scribe__input" style='width: calc(116px + (130 - 116) * ((100vw - 320px) / 880))'>
+        . Дом для некоторых крупных компаний и множества бутиковых виноделен, экспериментирующих с новыми сортами и стилями. Доминирующий сорт Шардоне, популярность набирает Пино Гри.<br><br>
+          <input type="text" maxlength="9" autocomplete="off" class="scribe__input" style='width: calc(149px + (167 - 149) * ((100vw - 320px) / 880))'>
+        . В этом маленьком регионе делают только 1% вин страны, но зато среди них встречаются самые терруарные Пино Нуары и изысканные Совиньоны Блан. Самый известный субрегион Вайрарапы — Мартинборо с прохладным и сухим климатом, напоминающим о Бургундии.<br><br>
+          <input type="text" maxlength="6" autocomplete="off" class="scribe__input" style='width: calc(99px + (111 - 99) * ((100vw - 320px) / 880))'>
+        . Регион с вулканическими почвами основан хорватскими, ливанскими и английскими иммигрантами.<br><br>
+          <input type="text" maxlength="8" autocomplete="off" class="scribe__input" style='width: calc(132px + (148 - 132) * ((100vw - 320px) / 880))'>
+        . На состав почв повлияло прохождение ледников, — глина, суглинки, гравий, лёссы. Большое количество солнца (2 409 часов в год) сочетается с прохладными бризами, дающими существенные перепады дневных и ночных температур. Горы защищают от избыточных дождей (655 мм в год) и сильных ветров.<br><br>
+        Центральный<input type="text" maxlength="5" autocomplete="off" class="scribe__input" style='width: calc(83px + (93 - 83) * ((100vw - 320px) / 880))'>
+        . Это самый южный винодельческий регион в мире и самый высокий в Новой Зеландии.<br><br>
+          <input type="text" maxlength="10" autocomplete="off" class="scribe__input" style='width: calc(165px + (185 - 165) * ((100vw - 320px) / 880))'>
+        . Узкая, но длинная (200 км) полоса пригодных для виноделия участков зажата между океаном и горной грядой. В последние годы здесь появляется всё больше бутиковых виноделен.<br><br>
+          <input type="text" maxlength="7" autocomplete="off" class="scribe__input" style='width: calc(116px + (130 - 116) * ((100vw - 320px) / 880))'>
+        . Современная история виноделия началась в 1970-х. Здесь одинаково хорошо получаются Совиньон Блан, Пино Нуар и ароматические сорта.
+      </div>
+      <div class=" button" onclick="scoreButton(0);scribeCheck()">Нажмите для завершения!</div>
+    </div>
+  </div>
+
+  <div class="task hidden">
+    <div class="lock hidden" style="z-index: 3"></div>
+    <div class="info" style="z-index: 2">
+      <div class="info__title">Выберите подходящие ноты для сорта Совиньон Блан.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page one left" style="z-index: 1">
+      <div class="one__grid">
+        <div class="one__categories oneM"></div>
+        <div class="one__bottle" style="background: url('img/sb.png') no-repeat center/cover"></div>
+      </div>
+      <div class="button" onclick="scoreButton(1);sortOneScore()">Нажмите для завершения!</div>
+    </div>
+  </div>
+
+  <div class="task hidden">
+    <div class="lock hidden"></div>
+    <div class="info">
+      <div class="info__title">Прочитайте внимательно вопрос. Дайте развёрнутый ответ в комментариях к уроку.</div>
+      <div onclick="startInfo(this)" class="info__button button">Понятно!</div>
+    </div>
+    <div class="task__page asked left">
+      <div class="asked__title"></div>
+      <div class=" button" onclick="endButton()">Дать ответ!</div>
+    </div>
+  </div>
+</div>
+<div class="footer"></div>
+<div class="menu menu__off">
+  <div class="menu__content"></div>
+</div>
+<script src="js/scribe.js"></script>
+<script src="js/sort_one.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
